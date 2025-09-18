@@ -26,4 +26,30 @@ read.csv from readr package
 
 ## Take a look at the data 
 
+printing in the console
 
+```{r}
+litters_df
+```
+
+```{r}
+head(litters_df)
+```
+
+```{r}
+tail(litter)
+```
+
+```{r}
+skimr::skim(litters_df)
+```
+
+also you can put "V iew(litters_df)" in console to view dataframe. 
+
+## Options to read csv
+
+```{r}
+litters_df = read_csv("./data_import_examples/FAS_litters.csv", skip = 10, col_names = FALSE)
+```
+
+_col_names = FALSE_ indicated there is no seperate column name row, this way the first row is kept as column names.  
