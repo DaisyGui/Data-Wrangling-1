@@ -15,6 +15,15 @@ Read in the litters dataset.
 
 ```{r}
 litters_df = read.csv("./data_import_examples/FAS_litters.csv")
+
+litters_df = janitor::clean_names(litters_df)
 ```
 
 read.csv from readr package
+
+**janitor::clean_names** use clean_names function in janitor package. No need to library(janitor). Use when this is the only function used from janitor in this code.
+
+
+## Take a look at the data 
+
+
