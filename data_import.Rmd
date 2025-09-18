@@ -46,7 +46,7 @@ tail(litters_df)
 skimr::skim(litters_df)
 ```
 
-also you can put "V iew(litters_df)" in console to view dataframe. 
+also you can put "View(litters_df)" in console to view dataframe. 
 
 ## Options to read csv
 
