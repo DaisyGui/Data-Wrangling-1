@@ -37,7 +37,44 @@ pulse_df =
 
 litters_df = 
   read_csv("./data_import_examples/FAS_litters.csv", na = c("NA", ".", "")) |>
-  janitor::clean_names()
+  janitor::clean_names() |>
+  pivot_longer(
+    cols = gd0_weight:gd18_weight,
+    names_to = "gd_time", 
+    values_to = "weight"
+  ) |>
+  # variables: gd0_weight and gd18_weight -> gd_time(gd0_ or gd18_) + weight(values in original variables)
+  mutate(gd_time = case_match(
+    gd_time, 
+    "gd0_weight" ~ 0,
+    "gd18_weight" ~ 18
+    )) 
+  # change "gd0_weight" and "gd18_weight" in variable gd_time to 0 and 18
+
+```
+
+##Pivot wider
+
+```{r}
+analysis_df = 
+  tibble(
+    group = c("treatment", "treatment", "control", "control"),
+    time = c("pre", "post", "pre", "post"), 
+    mean = c(4, 10, 4.2, 5))
+
+
+```
+
+Pivot wider for human readability
+
+```{r}
+
+analysis_df |>
+  pivot_wider(
+    names_from = time, 
+    values_from = mean
+  ) |>
+  knitr::kable() #get formatted table after knitting
 
 ```
 
